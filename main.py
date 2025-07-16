@@ -64,18 +64,18 @@ if __name__ == "__main__":
     
     if(texto=="" or rutaImagen==""):
         notify.Me(">> Error: Hay almenos un campo vacio en texto o imagen de IA")
-        exit()
+        exit(1)
     
     print(">> Recursos de Imagen y Texto obtenidos")
     
     picasso = Bot(ACCESS_BOT_TOKEN, page_id)
-    # respuesta = picasso.subir_foto_local(rutaImagen, texto)
-    # if respuesta.status_code != 200:
-        # notify.Me(f"Error de picasso al subir post: {respuesta.status_code} Detalles: {respuesta.json()}")
+    respuesta = picasso.subir_foto_local(rutaImagen, texto)
+    if respuesta.status_code != 200:
+        notify.Me(f"Error de picasso al subir post: {respuesta.status_code} Detalles: {respuesta.json()}")
     
-    # print(f">> picasso hizo un post: Status Code: {respuesta.status_code}\n https://facebook.com/{page_id}/posts/{respuesta.json()['id']}")
+    print(f">> picasso hizo un post: Status Code: {respuesta.status_code}\n https://facebook.com/{page_id}/posts/{respuesta.json()['id']}")
     
-    # os.remove(rutaImagen)
-    # print(">> Imagen removida ")
+    os.remove(rutaImagen)
+    print(">> Imagen removida ")
     
     print(">> Fin de picasso")
