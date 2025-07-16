@@ -1,11 +1,12 @@
 import requests
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
-CHAT_ID=os.getenv("PERSONAL_CHAT_ID")
-TOKEN=os.getenv("BOT_TOKEN")
-GROUP_CHAT_ID = os.getenv('GROUP_CHAT_ID')
+# from dotenv import load_dotenv
+# load_dotenv()
+
+CHAT_ID=os.getenv("CHAT_ID")
+TOKEN=os.getenv("BOT")
+GROUP_CHAT_ID = os.getenv('GROUP')
 
 def Me(msg):
     URL = f"https://api.telegram.org/bot{TOKEN}/sendMessage"    

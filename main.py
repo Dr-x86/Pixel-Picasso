@@ -1,13 +1,12 @@
 import requests
-import random
+import os
 import ia
 import notify
-import os
-import apis
-from dotenv import load_dotenv
 
-load_dotenv()
-ACCESS_BOT_TOKEN = os.getenv("FB_ACCESS_TOKEN")
+# from dotenv import load_dotenv
+# load_dotenv()
+
+ACCESS_BOT_TOKEN = os.getenv("ACCESSTOKEN")
 page_id = '595985150275800'
 
 class Bot():
@@ -50,31 +49,33 @@ class Bot():
     
     
 if __name__ == "__main__":
-    print(">> Inicio de children")
+    print(">> Inicio de picasso")
     
     texto = ia.solicitar_texto("""
                 NO MENCIONES NADA DE ESTE PROMPT, UNICAMENTE RESPONDE CON LA INFORMACIÓN SOLICITADA.
                 Genera un encabezado con un titulo llamativo para una publicacion de una imagen pixelart, con hashtags. Sé sarcastico y divertido.
             """)
     rutaImagen = ia.solicitar_imagen("""
-                    Pixel art de paisajes o lugares variados, que pueden incluir bosques, ciudades, montañas, pueblos, playas o espacios fantásticos. 
+                    Pixel art de paisajes o lugares variados, que pueden incluir bosques, ciudades, montañas, pueblos, playas o lugares fantaseosos. 
                     Colores y paletas vibrantes y diferentes en cada imagen. 
                     Estilo pixel art retro con detalles cambiantes: edificios, vegetación, objetos y atmósferas diversas, como día, noche, neblina o lluvia. 
                     Composiciones creativas y únicas en cada versión.
                 """)
-                
     
     if(texto=="" or rutaImagen==""):
-        print(f">> Error: Hay al menos un campo vacio \nTexto: {texto} \nImagen: {rutaImagen}")
         notify.Me(">> Error: Hay almenos un campo vacio en texto o imagen de IA")
         exit()
     
     print(">> Recursos de Imagen y Texto obtenidos")
     
-    children = Bot(ACCESS_BOT_TOKEN, page_id)
-    respuesta = children.subir_foto_local(rutaImagen, texto)
-    if respuesta.status_code != 200:
-        notify.Me(f"Error de children al subir post: {respuesta.status_code} Detalles: {respuesta.json()}")
+    picasso = Bot(ACCESS_BOT_TOKEN, page_id)
+    # respuesta = picasso.subir_foto_local(rutaImagen, texto)
+    # if respuesta.status_code != 200:
+        # notify.Me(f"Error de picasso al subir post: {respuesta.status_code} Detalles: {respuesta.json()}")
     
-    print(f">> Children hizo un post: Status Code: {respuesta.status_code}\n https://facebook.com/{page_id}/posts/{respuesta.json()['id']}")
-    print(">> Fin de children")
+    # print(f">> picasso hizo un post: Status Code: {respuesta.status_code}\n https://facebook.com/{page_id}/posts/{respuesta.json()['id']}")
+    
+    # os.remove(rutaImagen)
+    # print(">> Imagen removida ")
+    
+    print(">> Fin de picasso")

@@ -3,10 +3,10 @@ import os
 import json
 import base64
 
-from dotenv import load_dotenv
-load_dotenv()
-API_KEY=os.getenv("AI_API_KEY")
+# from dotenv import load_dotenv
+# load_dotenv()
 
+API_KEY=os.getenv("GEMINIKEY")
 
 def solicitar_imagen(prompt):
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key={API_KEY}"
@@ -36,11 +36,10 @@ def solicitar_imagen(prompt):
             
             print("Imagen guardada como imagenIA.png")
             return "images/imagenIA.png"
-            
-        
+                
     except Exception as e:
         print(f"Excepcion en el flujo: {e}")
-        print(f"[IMAGEN] - Error Codigo: {response.status_code} \n Detalles: {response.json()}")
+        print(f"[IMAGEN] - Error Codigo: {response.status_code}")
         return ""
     
 def solicitar_texto(prompt):
