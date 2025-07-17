@@ -2,6 +2,7 @@ import requests
 import random
 import os
 import ia
+import notify
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -64,6 +65,7 @@ def _meme_api():
             'author': data.get('author'),
             'title': data.get('title')
         }
+        
         if(not data):
             return None
 
@@ -76,6 +78,7 @@ def _meme_api():
     except Exception as e:
         print(f"Error inesperado: {e}")
     
+    print(f"[MEME] - STATUS CODE: {response.status_code}")
     return None
 
 def meme(max_intentos=600):
@@ -100,6 +103,9 @@ def meme(max_intentos=600):
         
     print(" Se agotaron los memes nuevos. Reposteando uno repetido...")
     
+    data = _meme_api()
+    if data is None:
+        notify.Me("[MEME] Urgente revisar, posiblemente esté caida la API meme revisa prints")
     return _meme_api()
 
 ################################################## GENERACION DE IMAGENES CON IA #######################################################

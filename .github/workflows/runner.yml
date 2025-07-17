@@ -30,6 +30,9 @@ jobs:
           CHAT_ID: ${{ secrets.CHAT_ID }}
           GROUP: ${{ secrets.GROUP }}
           GEMINIKEY: ${{ secrets.GEMINIKEY }}
+	  SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+	  SUPABASE_DB: ${{ secrets.SUPABASE_DB }}
+
         run: |
           echo "Running main.py with secrets"
           python main.py

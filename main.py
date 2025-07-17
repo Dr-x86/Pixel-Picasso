@@ -106,6 +106,7 @@ if __name__ == "__main__":
         print(f">> Picasso posteo: https://facebook.com/{page_id}/posts/{post_id}")
         
         if "me" in titulo.lower() or "(oc)" in titulo.lower() or "by me" in titulo.lower(): # Honor a quien honor merece
+            print(f">> Picasso: Reconocimiento a: {datos.get('author')}")
             bot.comentar_post(post_id, "Author: " + datos.get('author'))
     
     print(">> Fin de picasso")
