@@ -3,8 +3,8 @@ import os
 import json
 import base64
 
-# from dotenv import load_dotenv
-# load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
 API_KEY=os.getenv("GEMINIKEY")
 
@@ -38,8 +38,7 @@ def solicitar_imagen(prompt):
             return "images/imagenIA.png"
                 
     except Exception as e:
-        print(f"Excepcion en el flujo: {e}")
-        print(f"[IMAGEN] - Error Codigo: {response.status_code}")
+        print(f"[IMAGEN] - Error excepcion. {e}")
         return ""
     
 def solicitar_texto(prompt):

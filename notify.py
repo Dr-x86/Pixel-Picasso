@@ -1,8 +1,8 @@
 import requests
 import os
 
-# from dotenv import load_dotenv
-# load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
 CHAT_ID=os.getenv("CHAT_ID")
 TOKEN=os.getenv("BOT")
