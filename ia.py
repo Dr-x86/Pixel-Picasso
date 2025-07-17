@@ -34,7 +34,7 @@ def solicitar_imagen(prompt):
             with open("images/imagenIA.png", "wb") as f:
                 f.write(base64.b64decode(base64_image))
             
-            print("Imagen guardada como imagenIA.png")
+            print("[IMAGEN] - Imagen guardada correctamente")
             return "images/imagenIA.png"
                 
     except Exception as e:
