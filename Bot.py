@@ -103,7 +103,7 @@ class Picasso():
         
             if "my" in titulo or "(oc)" in titulo or "by me" in titulo: # Honor a quien honor merece
                 print(f">> Picasso: Reconocimiento a: {datos.get('author')}")
-                self.comentar_post(post_id, f"Suggested by: @{datos.get('author')}")
+                self.comentar_post(post_id, f"Credits: @{datos.get('author')}")
             
             recordar(datos.get('url'),'set_memes')
 
@@ -138,7 +138,7 @@ class Picasso():
             
             if datos.get('author') != "desconocido" or datos.get('author') != None:
                 print(f">> Picasso: Reconocimiento a: {datos.get('author')}")
-                self.comentar_post(post_id, f"Sugessted by: @{datos.get('author')}")
+                self.comentar_post(post_id, f"Credits: @{datos.get('author')}")
             
             recordar(datos.get('url'),'set_waifus')
         
