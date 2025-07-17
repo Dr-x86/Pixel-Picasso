@@ -17,8 +17,11 @@ if __name__ == "__main__":
     bot = Picasso(ACCESSTOKEN,page_id,"Daniel","anime, casas, lugares.") # Setear las caracteristicas del bot
     
     bot.subir_meme()
+    sleep(2)
     bot.subir_waifu()
+    sleep(2)
     bot.subir_libro()
+    
     """ De momento nada de IA """
     
     print(">> Fin de picaso")
