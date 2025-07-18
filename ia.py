@@ -31,6 +31,7 @@ def solicitar_imagen(prompt):
             parts = data['candidates'][0]['content']['parts']
             base64_image = parts[1]['inlineData']['data']
         
+            os.makedirs("images", exist_ok=True)
             with open("images/imagenIA.png", "wb") as f:
                 f.write(base64.b64decode(base64_image))
             
