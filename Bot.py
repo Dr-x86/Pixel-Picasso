@@ -136,8 +136,9 @@ class Picasso():
             post_id = respuesta.json()['id']
             print(f">> [WAIFU] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
             
-            if datos.get('author') != "desconocido" or datos.get('author') != None:
+            if datos.get('author') != 'desconocido':
                 print(f">> Picasso: Reconocimiento a: {datos.get('author')}")
                 self.comentar_post(post_id, f"Credits: @{datos.get('author')}")
+            
             
             recordar(datos.get('url'),'set_waifus')
