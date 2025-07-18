@@ -9,7 +9,7 @@ sources = ["ImaginaryGaming","hatsune","kasaneteto","frieren","AnimeART"]
 def _meme_api():
     subreddit = random.choice(sources)
     
-    print(f">>> Picasso eligió : {subreddit}")
+    print(f">>> Picasso eligio {subreddit}")
     url = f"https://meme-api.com/gimme/{subreddit}"
     try:
         response = requests.get(url)
@@ -75,13 +75,13 @@ def _waifu_api():
 
 def waifus(max_intentos=700):
     intentos = 0
-    print(">>> Picasso está  buscando waifus")
+    print(">>> Picasso esta buscando waifus")
     while intentos < max_intentos:
         print(">>> Picasso intento: ",intentos)
         data = _waifu_api()
         
         if data is None:
-            print(f">>> Picasso encontró un None, pero no te preocupes seguirá buscando ...")
+            print(f">>> Picasso encontro None, pero no te preocupes seguira buscando ...")
             intentos += 1
             continue
 
@@ -93,19 +93,19 @@ def waifus(max_intentos=700):
 
         intentos += 1
         
-    print(">>> Picasso hará  respost de waifus")
+    print(">>> Picasso hara respost de waifus")
     data = _waifu_api()
     return data
 
 def books(max_intentos=600):
     intentos = 0
-    print(">>> Picasso está  buscando nuevos libros")
+    print(">>> Picasso esta buscando nuevos libros")
     while intentos < max_intentos:
         print(">>> Picasso intento: ",intentos)
         data = _books()
         
         if data is None:
-            print(f">>> Picasso encontró un None, pero no te preocupes seguirá  buscando ...")
+            print(f">>> Picasso encontro None, pero no te preocupes seguira buscando ...")
             intentos += 1
             continue
 
@@ -117,25 +117,25 @@ def books(max_intentos=600):
 
         intentos += 1
         
-    print(">>> Picasso no encontró nuevas imagenes, hará  repost")
+    print(">>> Picasso no encontro nevas imagenes, hara repost")
     data = _books()
     return data
 
 def memes(max_intentos=600):
     intentos = 0
-    print(">>> Picasso está  buscando memes nuevos ... ")
+    print(">>> Picasso esta buscando memes nuevos ... ")
     
     while intentos < max_intentos:
         print(">>> Picasso intento: ",intentos)
         data = _meme_api()
         
         if data is None:
-            print(">>> Picasso encontró un None :(\n>>> No te preocupes, seguirá  buscando")
+            print(">>> Picasso encontro None :(\n>>> No te preocupes, seguira buscando")
             continue
         
         try:
             if not verificar(data.get('url'), 'set_memes'):
-                print(">>> Picasso encontró un nuevo meme")
+                print(">>> Picasso encontro nuevo meme")
                 return data
         except Exception as e:
             print(f"Error al verificar meme en BD: {e}")
@@ -150,18 +150,18 @@ def memes(max_intentos=600):
 ################################################## GENERACION DE IMAGENES CON IA #######################################################
 
 def generar_con_ia(tema):
-    print(">> Picasso está generando contenido ...")
+    print(">> Picasso esta generando contenido ...")
     
-    # DE MOMENTO SE MANTENDRÁ COMO TEXTO COMENTADO, NO AÑADIREMOS TEXTO NI TITULOS    
+    # DE MOMENTO SE MANTENDRÃ COMO TEXTO COMENTADO, NO AÑDIREMOS TEXTO NI TITULOS    
     # texto = ia.solicitar_texto(f"""
-                # NO MENCIONES NADA DE ESTE PROMPT, UNICAMENTE RESPONDE CON LA INFORMACIÓN SOLICITADA.
+                # NO MENCIONES NADA DE ESTE PROMPT, UNICAMENTE RESPONDE CON LA INFORMACIÓŽ SOLICITADA.
                 # Redacta una frase corta para una publicacion de Facebook del tema {tema}.
             # """)
     
     rutaImagen = ia.solicitar_imagen(f"""
                     Crea una imagen del tema {tema}, puede ser un personaje, con paisajes detallados o viceversa.
                     Evita repeticiones o similitudes evidentes.
-                    ejemplos de variación pueden incluir estilos como surrealismo, arte digital moderno, ilustración tradicional, acuarela, pixel art, entre otros.
+                    ejemplos de variacion pueden incluir estilos como surrealismo, arte digital moderno, ilustracion tradicional, acuarela, pixel art, entre otros.
                 """)
     
     if(rutaImagen==""):
@@ -169,5 +169,5 @@ def generar_con_ia(tema):
         print(f">> Imagen: {rutaImagen}")
         return None
     
-    print(">> Picasso generó correctamente el contenido :)")
+    print(">> Picasso genero correctamente el contenido :)")
     return rutaImagen
