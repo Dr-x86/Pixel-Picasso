@@ -14,7 +14,7 @@ if __name__ == "__main__":
     
     # Mi propio flujo
     
-    bot = Picasso(ACCESSTOKEN,page_id,"Daniel","anime, personajes, lugares. pixel-art") # Setear las caracteristicas del bot
+    bot = Picasso(ACCESSTOKEN,page_id,"Daniel","anime, lugares. pixel-art") # Setear las caracteristicas del bot
     
     bot.subir_meme()
     sleep(2)
