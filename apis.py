@@ -1,9 +1,3 @@
-#!/usr/bin/python
-# -*- coding: ansi -*-
-
-# NO VOLVERÉ A USAR ECHO DE LINUX -.-
-
-
 import requests
 import random
 import os
