@@ -22,6 +22,7 @@ def _meme_api():
             'title': data.get('title')
         }
         
+        
         if(not data):
             return None
 

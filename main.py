@@ -17,11 +17,11 @@ if __name__ == "__main__":
     bot = Picasso(ACCESSTOKEN,page_id,"Daniel","Waifus en pixel art") # Setear las caracteristicas del bot
     
     bot.subir_meme()
-    sleep(2)
-    bot.subir_waifu()
-    sleep(2)
-    bot.subir_libro()
-    sleep(10)
-    bot.subir_contenido_ia()
+    # sleep(2)
+    # bot.subir_waifu()
+    # sleep(2)
+    # bot.subir_libro()
+    # sleep(10)
+    # bot.subir_contenido_ia()
     
     print(">> Fin de picaso")

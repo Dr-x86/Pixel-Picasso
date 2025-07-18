@@ -89,24 +89,31 @@ class Picasso():
     
     def subir_meme(self):
         datos = apis.memes()
-        
         if datos is None:
             notify.Me("[MEME] - Error grave: Datos=None en ultima capa")
             print("[MEME] - Error grave: Datos=None en ultima capa")
             return
-        
-        respuesta = self.subir_foto(datos.get('url'),f" '{datos.get('title')}' ")
-        if respuesta:
-            post_id = respuesta.json()['id']
-            titulo = datos.get('title').lower()
-            print(f">> [MEME] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
-        
-            if "my" in titulo or "(oc)" in titulo or "by me" in titulo: # Honor a quien honor merece
-                print(f">> Picasso: Reconocimiento a: {datos.get('author')}")
-                self.comentar_post(post_id, f"Credits: @{datos.get('author')}")
+        try:
+            print("[MEME]::  ",datos)
             
-            recordar(datos.get('url'),'set_memes')
-
+            respuesta = self.subir_foto(datos.get('url'),f" '{datos.get('title')}' ")
+            
+            print(respuesta.json())
+            
+            if respuesta.status_code==200:
+                post_id = respuesta.json()['id']
+                titulo = datos.get('title').lower()
+                print(f">> [MEME] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
+            
+                if "my" in titulo or "(oc)" in titulo or "by me" in titulo: # Honor a quien honor merece
+                    print(f">> Picasso: Reconocimiento a: {datos.get('author')}")
+                    self.comentar_post(post_id, f"Credits: @{datos.get('author')}")
+                
+                recordar(datos.get('url'),'set_memes')
+                
+        except Exception as e:
+            print(f"[MEME] - Excepcion: {e}")
+            notify.Me(f"[MEME] - Excepcion: {e}")
 
     def subir_libro(self):
         datos = apis.books()
@@ -115,14 +122,17 @@ class Picasso():
             notify.Me("[BOOKS] - Error grave: Datos=None en ultima capa")
             print("[BOOKS] - Error grave: Datos=None en ultima capa")
             return
-        
-        respuesta = self.subir_foto(datos.get('url'),datos.get('title'))
-        if respuesta:
-            post_id = respuesta.json()['id']
-            print(f">> [BOOKS] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
+        try:
+            respuesta = self.subir_foto(datos.get('url'),datos.get('title'))
+            if respuesta.status_code==200:
+                post_id = respuesta.json()['id']
+                print(f">> [BOOKS] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
             
-            recordar(datos.get('url'),'set_waifus')
-
+                recordar(datos.get('url'),'set_waifus')
+        except Exception as e:
+            notify.Me(f"[BOOKS] - Excepcion: {e}")
+            print(f"[BOOKS] - Excepcion: {e}")
+        
     def subir_waifu(self):
         datos = apis.waifus()
         
@@ -130,15 +140,17 @@ class Picasso():
             notify.Me("[WAIFU] Error grave: datos = None en ultima capa")
             print("[WAIFU] Error grave: datos = None en ultima capa")
             return
-        
-        respuesta = self.subir_foto(datos.get('url'), datos.get('title'))
-        if respuesta:
-            post_id = respuesta.json()['id']
-            print(f">> [WAIFU] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
+        try:
+            respuesta = self.subir_foto(datos.get('url'), datos.get('title'))
+            if respuesta.status_code==200:
+                post_id = respuesta.json()['id']
+                print(f">> [WAIFU] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
             
-            if datos.get('author') != 'desconocido':
-                print(f">> Picasso: Reconocimiento a: {datos.get('author')}")
-                self.comentar_post(post_id, f"Credits: @{datos.get('author')}")
+                if not('desconocido' in datos.get('author')):
+                    print(f">> Picasso: Reconocimiento a: {datos.get('author')}")
+                    self.comentar_post(post_id, f"Credits: @{datos.get('author')}")
             
-            
-            recordar(datos.get('url'),'set_waifus')
+                recordar(datos.get('url'),'set_waifus')
+        except Exception as e:
+            notify.Me(f"[WAIFU] - Excepcion: {e}")
+            print(f"[WAIFU] - Excepcion: {e}")
