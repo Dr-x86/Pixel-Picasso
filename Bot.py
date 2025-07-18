@@ -100,9 +100,7 @@ class Picasso():
             
             respuesta = self.subir_foto(datos.get('url'),f" '{datos.get('title')}' ")
             
-            print(respuesta.json())
-            
-            if respuesta.status_code==200:
+            if respuesta.status_code == 200:
                 post_id = respuesta.json()['id']
                 titulo = datos.get('title').lower()
                 print(f">> [MEME] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
