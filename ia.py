@@ -39,6 +39,7 @@ def solicitar_imagen(prompt):
                 
     except Exception as e:
         print(f"[IMAGEN] - Error excepcion. {e}")
+        print(f"[IMAGEN] - Data {data}")
         return ""
     
 def solicitar_texto(prompt):

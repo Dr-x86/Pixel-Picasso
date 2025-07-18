@@ -1,3 +1,9 @@
+#!/usr/bin/python
+# -*- coding: ansi -*-
+
+# NO VOLVERÉ A USAR ECHO DE LINUX -.-
+
+
 import requests
 import random
 import os
@@ -9,7 +15,7 @@ sources = ["ImaginaryGaming","hatsune","kasaneteto","frieren","AnimeART"]
 def _meme_api():
     subreddit = random.choice(sources)
     
-    print(f">>> Picasso eligiÃ³ : {subreddit}")
+    print(f">>> Picasso eligió : {subreddit}")
     url = f"https://meme-api.com/gimme/{subreddit}"
     try:
         response = requests.get(url)
@@ -75,13 +81,13 @@ def _waifu_api():
 
 def waifus(max_intentos=700):
     intentos = 0
-    print(">>> Picasso estÃ¡ buscando waifus")
+    print(">>> Picasso está  buscando waifus")
     while intentos < max_intentos:
         print(">>> Picasso intento: ",intentos)
         data = _waifu_api()
         
         if data is None:
-            print(f">>> Picasso encontrÃ³ un None, pero no te preocupes seguirÃ¡ buscando ...")
+            print(f">>> Picasso encontró un None, pero no te preocupes seguirá buscando ...")
             intentos += 1
             continue
 
@@ -93,19 +99,19 @@ def waifus(max_intentos=700):
 
         intentos += 1
         
-    print(">>> Picasso harÃ¡ respost de waifus")
+    print(">>> Picasso hará  respost de waifus")
     data = _waifu_api()
     return data
 
 def books(max_intentos=600):
     intentos = 0
-    print(">>> Picasso estÃ¡ buscando nuevos libros")
+    print(">>> Picasso está  buscando nuevos libros")
     while intentos < max_intentos:
         print(">>> Picasso intento: ",intentos)
         data = _books()
         
         if data is None:
-            print(f">>> Picasso encontrÃ³ un None, pero no te preocupes seguirÃ¡ buscando ...")
+            print(f">>> Picasso encontró un None, pero no te preocupes seguirá  buscando ...")
             intentos += 1
             continue
 
@@ -117,25 +123,25 @@ def books(max_intentos=600):
 
         intentos += 1
         
-    print(">>> Picasso no encontrÃ³ nuevas imagenes, harÃ¡ repost")
+    print(">>> Picasso no encontró nuevas imagenes, hará  repost")
     data = _books()
     return data
 
 def memes(max_intentos=600):
     intentos = 0
-    print(">>> Picasso estÃ¡ buscando memes nuevos ... ")
+    print(">>> Picasso está  buscando memes nuevos ... ")
     
     while intentos < max_intentos:
         print(">>> Picasso intento: ",intentos)
         data = _meme_api()
         
         if data is None:
-            print(">>> Picasso encontrÃ³ un None :(\n>>> No te preocupes, seguirÃ¡ buscando")
+            print(">>> Picasso encontró un None :(\n>>> No te preocupes, seguirá  buscando")
             continue
         
         try:
             if not verificar(data.get('url'), 'set_memes'):
-                print(">>> Picasso encontrÃ³ un nuevo meme")
+                print(">>> Picasso encontró un nuevo meme")
                 return data
         except Exception as e:
             print(f"Error al verificar meme en BD: {e}")
@@ -150,23 +156,24 @@ def memes(max_intentos=600):
 ################################################## GENERACION DE IMAGENES CON IA #######################################################
 
 def generar_con_ia(tema):
-    print(">> Picasso estÃ¡ generando contenido ...")
-    texto = ia.solicitar_texto(f"""
-                NO MENCIONES NADA DE ESTE PROMPT, UNICAMENTE RESPONDE CON LA INFORMACIÃ“N SOLICITADA.
-                Redacta una frase corta para una publicacion de Facebook del tema {tema}.
-            """)
-
+    print(">> Picasso está generando contenido ...")
+    
+    # DE MOMENTO SE MANTENDRÁ COMO TEXTO COMENTADO, NO AÑADIREMOS TEXTO NI TITULOS    
+    # texto = ia.solicitar_texto(f"""
+                # NO MENCIONES NADA DE ESTE PROMPT, UNICAMENTE RESPONDE CON LA INFORMACIÓN SOLICITADA.
+                # Redacta una frase corta para una publicacion de Facebook del tema {tema}.
+            # """)
+    
     rutaImagen = ia.solicitar_imagen(f"""
-                    Crea una imagen del tema {tema}, pueden ser personajes, paisajes etc.
-                    mostrando diferentes estilos artÃ­sticos, composiciones, perspectivas, colores, Ã©pocas o emociones. 
-                    evita repeticiones o similitudes evidentes.
-                    Ejemplos de variaciÃ³n pueden incluir estilos como surrealismo, arte digital moderno, ilustraciÃ³n tradicional, acuarela, pixel art, entre otros. 
+                    Crea una imagen del tema {tema}, puede ser un personaje, con paisajes detallados o viceversa.
+                    Evita repeticiones o similitudes evidentes.
+                    ejemplos de variación pueden incluir estilos como surrealismo, arte digital moderno, ilustración tradicional, acuarela, pixel art, entre otros.
                 """)
     
     if(rutaImagen==""):
         print(">> Error: Hay almenos un campo vacio en texto o imagen de IA notificando ... ")
-        print(f"> Titulo: {texto}\n> Imagen: {rutaImagen}")
-        return None, None
+        print(f">> Imagen: {rutaImagen}")
+        return None
     
-    print(">> Picasso generÃ³ correctamente el contenido :)")
-    return (rutaImagen,texto)
+    print(">> Picasso generó correctamente el contenido :)")
+    return rutaImagen

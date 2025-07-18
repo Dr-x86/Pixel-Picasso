@@ -14,14 +14,14 @@ if __name__ == "__main__":
     
     # Mi propio flujo
     
-    bot = Picasso(ACCESSTOKEN,page_id,"Daniel","anime, lugares. pixel-art") # Setear las caracteristicas del bot
+    bot = Picasso(ACCESSTOKEN,page_id,"Daniel","Waifus en pixel art") # Setear las caracteristicas del bot
     
     bot.subir_meme()
     sleep(2)
     bot.subir_waifu()
     sleep(2)
     bot.subir_libro()
-    
-    """ De momento nada de IA """
+    sleep(10)
+    bot.subir_contenido_ia()
     
     print(">> Fin de picaso")

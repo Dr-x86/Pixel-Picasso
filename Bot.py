@@ -76,23 +76,23 @@ class Picasso():
     """
     
     def subir_contenido_ia(self):
-        imagen,titulo = apis.generar_con_ia(self.tema)
-        if (imagen and titulo):
-            respuesta = self.subir_foto_local(imagen,titulo)
+        imagen = apis.generar_con_ia(self.tema)
+        if (imagen):
+            respuesta = self.subir_foto_local(imagen,"")
             if respuesta:
                 post_id = respuesta.json()['id']
-                print(f">> [IA] - Picasso posteo: https://facebook.com/{page_id}/posts/{post_id}")
+                print(f">> [IA] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
             os.remove("images/imagenIA.png")
         else:
-            notify.Me(">>[IA] Error grave: no hay titulo ni texto")
-            print("[SCRAPPER] - Error grave: Datos=None en ultima capa")
+            notify.Me(">>[IA] Error grave: No generó la imagen")
+            print(">>[IA] Error grave: No generó la imagen")
     
     def subir_meme(self):
         datos = apis.memes()
         
         if datos is None:
-            notify.Me("[SCRAPPER] - Error grave: Datos=None en ultima capa")
-            print("[SCRAPPER] - Error grave: Datos=None en ultima capa")
+            notify.Me("[MEME] - Error grave: Datos=None en ultima capa")
+            print("[MEME] - Error grave: Datos=None en ultima capa")
             return
         
         respuesta = self.subir_foto(datos.get('url'),f" '{datos.get('title')}' ")
