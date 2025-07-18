@@ -14,6 +14,8 @@ class Picasso():
     def _post_on_facebook(self, url, data=None, files=None):
         try:
             response = requests.post(url, data=data, files=files)
+            response.raise_for_status()
+            
             return response
         except Exception as e:
             notify.Me(f"[BOT] - Ocurrio un error con el usuario: {self.usuario}\nCon la page_id: {self.page_id}\nResponse: {response.json()}\nExcepcion: {e}")
