@@ -89,13 +89,13 @@ class Picasso():
     
     def subir_meme(self):
         datos = apis.memes()
-        respuesta = self.subir_foto(datos.get('url'),f" '{datos.get('title')}' ")
         
         if datos is None:
             notify.Me("[SCRAPPER] - Error grave: Datos=None en ultima capa")
             print("[SCRAPPER] - Error grave: Datos=None en ultima capa")
             return
         
+        respuesta = self.subir_foto(datos.get('url'),f" '{datos.get('title')}' ")
         if respuesta:
             post_id = respuesta.json()['id']
             titulo = datos.get('title').lower()
@@ -141,4 +141,3 @@ class Picasso():
                 self.comentar_post(post_id, f"Credits: @{datos.get('author')}")
             
             recordar(datos.get('url'),'set_waifus')
-        

@@ -64,7 +64,7 @@ def _waifu_api():
         
         data = {
             'url': image['url'],
-            'title': image['tags'][0]['description'] if image['tags'] else 'Greetings!!',
+            'title': image['tags'][0]['name'] if image['tags'] else 'Greetings!!',
             'author': image['artist']['name'] if image['artist'] else 'desconocido'
         }
         return data
