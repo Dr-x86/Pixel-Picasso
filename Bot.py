@@ -141,7 +141,7 @@ class Picasso():
             print("[WAIFU] Error grave: datos = None en ultima capa")
             return
         try:
-            respuesta = self.subir_foto(datos.get('url'), datos.get('title'))
+            respuesta = self.subir_foto(datos.get('url'))
             if respuesta.status_code==200:
                 post_id = respuesta.json()['id']
                 print(f">> [WAIFU] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
