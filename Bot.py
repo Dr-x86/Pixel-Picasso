@@ -16,10 +16,10 @@ class Picasso():
             response = requests.post(url, data=data, files=files)
             response.raise_for_status()
             
-            return response
         except Exception as e:
             notify.Me(f"[BOT] - Ocurrio un error con el usuario: {self.usuario}\nCon la page_id: {self.page_id}\nResponse: {response.json()}\nExcepcion: {e}")
-            return ""
+        
+        return response
         
     def subir_foto_local(self, image_path, caption=""):
         url = f'https://graph.facebook.com/{self.page_id}/photos'
@@ -74,7 +74,7 @@ class Picasso():
         return self._post_on_facebook(url,params)
     
     """
-    ##################### FUNCIONES PRINCIPALES
+    ######################################################### FUNCIONES PRINCIPALES #############################################################
     """
     
     def subir_contenido_ia(self):
@@ -92,12 +92,10 @@ class Picasso():
     def subir_meme(self):
         datos = apis.memes()
         if datos is None:
-            notify.Me("[MEME] - Error grave: Datos=None en ultima capa")
-            print("[MEME] - Error grave: Datos=None en ultima capa")
+            notify.Me("[MEME] - Error grave: Datos = None en ultima capa")
+            print("[MEME] - Error grave: Datos = None en ultima capa")
             return
-        try:
-            print("[MEME]::  ",datos)
-            
+        try: 
             respuesta = self.subir_foto(datos.get('url'),f" '{datos.get('title')}' ")
             
             if respuesta.status_code == 200:
@@ -124,7 +122,7 @@ class Picasso():
             return
         try:
             respuesta = self.subir_foto(datos.get('url'),datos.get('title'))
-            if respuesta.status_code==200:
+            if respuesta.status_code == 200:
                 post_id = respuesta.json()['id']
                 print(f">> [BOOKS] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
             
@@ -142,7 +140,8 @@ class Picasso():
             return
         try:
             respuesta = self.subir_foto(datos.get('url'))
-            if respuesta.status_code==200:
+            
+            if respuesta.status_code == 200:
                 post_id = respuesta.json()['id']
                 print(f">> [WAIFU] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
             
