@@ -1,6 +1,5 @@
 import requests
 import os
-import notify
 import apis
 from memoria import recordar
 
@@ -17,7 +16,7 @@ class Picasso():
             response.raise_for_status()
             
         except Exception as e:
-            notify.Me(f"[BOT] - Ocurrio un error con el usuario: {self.usuario}\nCon la page_id: {self.page_id}\nResponse: {response.json()}\nExcepcion: {e}")
+            print(f"[BOT] - Ocurrio un error con el usuario: {self.usuario}\nCon la page_id: {self.page_id}\nResponse: {response.json()}\nExcepcion: {e}")
         
         return response
         
@@ -86,13 +85,13 @@ class Picasso():
                 print(f">> [IA] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
             os.remove("images/imagenIA.png")
         else:
-            notify.Me(">>[IA] Error grave: No generó la imagen")
+            print(">>[IA] Error grave: No generó la imagen")
             print(">>[IA] Error grave: No generó la imagen")
     
     def subir_meme(self):
         datos = apis.memes()
         if datos is None:
-            notify.Me("[MEME] - Error grave: Datos = None en ultima capa")
+            print("[MEME] - Error grave: Datos = None en ultima capa")
             print("[MEME] - Error grave: Datos = None en ultima capa")
             return
         try: 
@@ -107,17 +106,17 @@ class Picasso():
                     print(f">> Picasso: Reconocimiento a: {datos.get('author')}")
                     self.comentar_post(post_id, f"Credits: @{datos.get('author')}")
                 
-                recordar(datos.get('url'),'set_memes')
+                recordar(datos.get('url'),'set_pixelpicasso')
                 
         except Exception as e:
             print(f"[MEME] - Excepcion: {e}")
-            notify.Me(f"[MEME] - Excepcion: {e}")
+            print(f"[MEME] - Excepcion: {e}")
 
     def subir_libro(self):
         datos = apis.books()
         
         if datos is None:
-            notify.Me("[BOOKS] - Error grave: Datos=None en ultima capa")
+            print("[BOOKS] - Error grave: Datos=None en ultima capa")
             print("[BOOKS] - Error grave: Datos=None en ultima capa")
             return
         try:
@@ -126,16 +125,16 @@ class Picasso():
                 post_id = respuesta.json()['id']
                 print(f">> [BOOKS] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
             
-                recordar(datos.get('url'),'set_waifus')
+                recordar(datos.get('url'),'set_pixelpicasso')
         except Exception as e:
-            notify.Me(f"[BOOKS] - Excepcion: {e}")
+            print(f"[BOOKS] - Excepcion: {e}")
             print(f"[BOOKS] - Excepcion: {e}")
         
     def subir_waifu(self):
         datos = apis.waifus()
         
         if(datos is None):
-            notify.Me("[WAIFU] Error grave: datos = None en ultima capa")
+            print("[WAIFU] Error grave: datos = None en ultima capa")
             print("[WAIFU] Error grave: datos = None en ultima capa")
             return
         try:
@@ -149,7 +148,7 @@ class Picasso():
                     print(f">> Picasso: Reconocimiento a: {datos.get('author')}")
                     self.comentar_post(post_id, f"Credits: @{datos.get('author')}")
             
-                recordar(datos.get('url'),'set_waifus')
+                recordar(datos.get('url'),'set_pixelpicasso')
         except Exception as e:
-            notify.Me(f"[WAIFU] - Excepcion: {e}")
+            print(f"[WAIFU] - Excepcion: {e}")
             print(f"[WAIFU] - Excepcion: {e}")

@@ -87,7 +87,7 @@ def waifus(max_intentos=700):
             continue
 
         try:
-            if not verificar(data['url'], 'set_waifus'):
+            if not verificar(data['url'], 'set_pixelpicasso'):
                 return data
         except Exception as e:
             print(f"[WAIFU] - Error al verificar URL en BD: {url}, error: {e}")
@@ -111,7 +111,7 @@ def books(max_intentos=600):
             continue
 
         try:
-            if not verificar(data.get('url'), 'set_waifus'):
+            if not verificar(data.get('url'), 'set_pixelpicasso'):
                 return data
         except Exception as e:
             print(f"[BOOKS] - Error al verificar URL en BD: {url}, error: {e}")
@@ -135,7 +135,7 @@ def memes(max_intentos=600):
             continue
         
         try:
-            if not verificar(data.get('url'), 'set_memes'):
+            if not verificar(data.get('url'), 'set_pixelpicasso'):
                 print(">>> Picasso encontro nuevo meme")
                 return data
         except Exception as e:
