@@ -106,7 +106,7 @@ class Picasso():
                     # print(f">> Picasso: Reconocimiento a: {datos.get('author')}")
                     # self.comentar_post(post_id, f"Credits: @{datos.get('author')}")
                 
-                if [x for x in ['(oc)','my','by me','mine','[oc]','i made','i did','i make'] if x in contenido.get('title').lower()]: # Honor a quien honor merece
+                if [x for x in ['(oc)','my','by me','mine','[oc]','i made','i did','i make',"i drew"] if x in titulo]: # Honor a quien honor merece
                     print(f">> Bot: comento ")
                     bot.comentar(post_id,f"Credits: @{datos.get('author')}")
                 else:
