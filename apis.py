@@ -4,7 +4,7 @@ import os
 import ia
 from memoria import verificar
 
-sources = ["hatsune","kasaneteto","frieren","Fitmoe"]
+sources = ["Fitmoe","CatgirlSFW","animeGirls","AnimeGirlsTattoos","AnimeGirlsRaceQueens"]
 
 def _meme_api():
     subreddit = random.choice(sources)
