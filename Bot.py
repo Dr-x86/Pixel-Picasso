@@ -108,10 +108,10 @@ class Picasso():
                 
                 if [x for x in ['(oc)','my','by me','mine','[oc]','i made','i did','i make',"i drew"] if x in titulo]: # Honor a quien honor merece
                     print(f">> Bot: comento ")
-                    bot.comentar(post_id,f"Credits: @{datos.get('author')}")
+                    self.comentar(post_id,f"Credits: @{datos.get('author')}")
                 else:
                     print(f">> Bot: comento ")
-                    bot.comentar(post_id,f"Suggested by: {datos.get('author')}")
+                    self.comentar(post_id,f"Suggested by: {datos.get('author')}")
                 
                 
                 recordar(datos.get('url'),'set_pixelpicasso')
