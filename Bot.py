@@ -132,8 +132,9 @@ class Picasso():
             if respuesta.status_code == 200:
                 post_id = respuesta.json()['id']
                 print(f">> [BOOKS] - Picasso posteo: https://facebook.com/{self.page_id}/posts/{post_id}")
-            
+                
                 recordar(datos.get('url'),'set_pixelpicasso')
+                
         except Exception as e:
             print(f"[BOOKS] - Excepcion: {e}")
             print(f"[BOOKS] - Excepcion: {e}")
