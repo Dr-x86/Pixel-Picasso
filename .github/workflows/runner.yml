@@ -2,7 +2,7 @@ name: Bot hace algo cada 2 horas
 
 on:
   schedule:
-    - cron: '0 */2 * * *'   # Cada 2 horas
+    - cron: '0 */3 * * *'   # Cada 2 horas
   workflow_dispatch:         # También permite ejecutarlo manualmente
 
 jobs:
