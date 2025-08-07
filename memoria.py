@@ -1,11 +1,8 @@
-import os
 from supabase import create_client, Client
-from dotenv import load_dotenv
-load_dotenv()
+from config import SUPABASE_DB, SUPABASE_KEY
 
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-SUPABASE_DB = os.getenv("SUPABASE_DB")
-supabase: Client = create_client(SUPABASE_DB, SUPABASE_KEY)
+
+supabase: Client = create_client(SUPABASE_DB, SUPABASE_KEY) # Inicializa el cliente para la base de datos
 
 def recordar(url,setUrl):
     insert_response = supabase.table(f'{setUrl}').insert({'url': url}).execute()
